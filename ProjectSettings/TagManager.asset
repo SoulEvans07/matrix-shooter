@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Projectile
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - PlayerOne
+  - PlayerTwo
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2978843953
+    locked: 0
+  - name: Object
+    uniqueID: 3393117543
+    locked: 0
+  - name: Player
+    uniqueID: 1216069363
+    locked: 0
+  - name: UI
+    uniqueID: 3505341709
+    locked: 0
+  - name: GameOver
+    uniqueID: 3869774243
+    locked: 0
+  - name: P1 Win
+    uniqueID: 2183135595
+    locked: 0
+  - name: P2 Win
+    uniqueID: 3817251793
+    locked: 0
+  - name: Death
+    uniqueID: 2782169843
+    locked: 0
+  - name: Top
+    uniqueID: 2405776677
+    locked: 0
