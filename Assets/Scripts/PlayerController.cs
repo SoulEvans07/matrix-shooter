@@ -99,9 +99,13 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-//		Debug.Log("trig: " + other.gameObject.name);
 		if (other.gameObject.tag.Equals("Projectile")) {
 			TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
+			Destroy(other.gameObject, 0f);
+		}
+
+		if (other.gameObject.tag.Equals("Asteroid")) {
+			TakeDamage(other.gameObject.GetComponent<AsteroidController>().dmg);
 			Destroy(other.gameObject, 0f);
 		}
 	}
