@@ -146,4 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 1
   velocity: {x: 1, y: 0, z: 0}
-  speed: 4
+  speed: 2

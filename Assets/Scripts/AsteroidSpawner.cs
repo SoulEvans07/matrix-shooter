@@ -4,11 +4,11 @@ using System.Timers;
 using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour {
-	public GameObject[] asteroids;
-	public Transform[] spawnPoints;
-	
 	public float spawnTimer;
-	public Vector3 startVector;
+	public GameObject[] asteroids;
+	public AsteroidSpawnPoint[] spawnPoints;
+	
+	public float[] speeds;
 	
 	void Start() {
 		InvokeRepeating("Spawn", spawnTimer, spawnTimer);
@@ -21,8 +21,13 @@ public class AsteroidSpawner : MonoBehaviour {
 		
 		int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 		int asteroidIndex = Random.Range(0, asteroids.Length);
+		int speedIndex = Random.Range(0, speeds.Length);
 		
-		GameObject asteroid = Instantiate(asteroids[asteroidIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
-		asteroid.GetComponent<AsteroidController>().velocity = startVector;
+		GameObject asteroid = Instantiate(asteroids[asteroidIndex], 
+			spawnPoints[spawnPointIndex].spawnPoint.position,
+			spawnPoints[spawnPointIndex].spawnPoint.rotation);
+		AsteroidController astrContr = asteroid.GetComponent<AsteroidController>();
+		astrContr.SetVelocity(spawnPoints[spawnPointIndex].startVector, speeds[speedIndex]);
+		asteroid.transform.position += astrContr.offset;
 	}
 }
