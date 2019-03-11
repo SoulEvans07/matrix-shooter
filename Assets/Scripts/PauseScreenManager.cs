@@ -19,7 +19,7 @@ public class PauseScreenManager : MonoBehaviour {
 		bool reset = Input.GetButton("Restart");
 		bool submit = Input.GetButton("Accept");
 		
-		if (timer > buttonTimer && Time.timeScale > 0f) {
+		if (timer > buttonTimer) {
 			if (paused) {
 				if (submit) {
 					Quit();
