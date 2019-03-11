@@ -16,11 +16,13 @@ public class PlayerController : MonoBehaviour {
 	private const int maxHealth = 5;
 	public int healthValue;
 	private bool isDead;
-	public bool IsDead {
-		get { return isDead; }
-	}
+	public bool IsDead => isDead;
 
 	public Color projectileColor;
+
+	private float x;
+	private float y;
+	private bool shoot;
 
 	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
@@ -29,15 +31,19 @@ public class PlayerController : MonoBehaviour {
 		this.healthSlider.setValue(this.healthValue);
 	}
 
+	private void Update() {
+		if (isDead) return;
+		
+		x = Input.GetAxisRaw(AXIS_X);
+		y = Input.GetAxisRaw(AXIS_Y);
+
+		shoot = Input.GetButton(SHOOT);
+	}
+
 	void FixedUpdate() {
 		if (isDead) return;
 		
 		timer += Time.deltaTime;
-
-		float x = Input.GetAxisRaw(AXIS_X);
-		float y = Input.GetAxisRaw(AXIS_Y);
-
-		bool shoot = Input.GetButton(SHOOT);
 
 		if (!gunDisplay.activeSelf && timer >= shootSpeed) {
 			gunDisplay.SetActive(true);
