@@ -298,6 +298,7 @@ MonoBehaviour:
   projectile: {fileID: 8439544785281582444, guid: 850337bad9a9a72448ac31e6cc02ff8c,
     type: 3}
   laser: {fileID: 4609987133313515463, guid: 037831199fbb1824fa4616e0f223190a, type: 3}
+  laserInstance: {fileID: 0}
   defaultShootSpeed: 0.12
   shootSpeed: 0.12
   left_gun: {fileID: 5615929925771153905}
@@ -308,7 +309,10 @@ MonoBehaviour:
   double_gun: {fileID: 21300000, guid: 20b645dadf185324fa2f459f08fe7bcc, type: 3}
   triple_gun: {fileID: 21300000, guid: 01170c9e56d518a449e9c9436a75a687, type: 3}
   laser_gun: {fileID: 21300000, guid: 8a6e8504c71ba294b902edac92fa5955, type: 3}
+  _hitAnim: {fileID: 0}
+  tiggerName: hitP1
   healthSlider: {fileID: 0}
+  iframes: 0.06
   healthValue: 0
   projectileColor: {r: 0.9, g: 0.45, b: 0.61956537, a: 1}
   powerupTimer: 0

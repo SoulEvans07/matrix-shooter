@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	public Sprite double_gun;
 	public Sprite triple_gun;
 	public Sprite laser_gun;
+	public Animator _hitAnim;
 
 	private float timer = 1f;
 
@@ -158,6 +159,8 @@ public class PlayerController : MonoBehaviour {
 
 	private void TakeDamage(int dmg) {
 		this.healthValue -= dmg;
+		_hitAnim.SetTrigger("hit");
+		
 		if (this.healthValue < 0) {
 			this.healthValue = 0;
 		}
@@ -225,13 +228,11 @@ public class PlayerController : MonoBehaviour {
 			if (other.CompareTag("Projectile")) {
 				TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
 				Destroy(other.gameObject, 0f);
-				this.iframeTimer = 0;
 			}
 
 			if (other.CompareTag("Asteroid")) {
 				TakeDamage(other.gameObject.GetComponent<AsteroidController>().dmg);
 				Destroy(other.gameObject, 0f);
-				this.iframeTimer = 0;
 			}
 		}
 	}

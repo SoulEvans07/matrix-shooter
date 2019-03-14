@@ -7,61 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4929480033016413434, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929480033016413434, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4929480033016413434, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0.43623194
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: AXIS_X
-      value: P2-Horizontal
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: AXIS_Y
-      value: P2-Vertical
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: SHOOT
-      value: P2-Fire1
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: gunDisplay
-      value: 
-      objectReference: {fileID: 5013248375291701818}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: projectileColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: projectileColor.g
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
-        type: 3}
-      propertyPath: projectileColor.b
-      value: 0.43623194
-      objectReference: {fileID: 0}
     - target: {fileID: 4212541109015665899, guid: 4825f496467facd4a92becd2d955388d,
         type: 3}
       propertyPath: m_Name
@@ -127,6 +72,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: AXIS_X
+      value: P2-Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: AXIS_Y
+      value: P2-Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: SHOOT
+      value: P2-Fire1
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: gunDisplay
+      value: 
+      objectReference: {fileID: 5013248375291701818}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: projectileColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: projectileColor.g
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: projectileColor.b
+      value: 0.43623194
+      objectReference: {fileID: 0}
+    - target: {fileID: 330863826235417281, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: tiggerName
+      value: hitP2
+      objectReference: {fileID: 0}
     - target: {fileID: 4212541109015665892, guid: 4825f496467facd4a92becd2d955388d,
         type: 3}
       propertyPath: m_Color.r
@@ -141,6 +131,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929480033016413434, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929480033016413434, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929480033016413434, guid: 4825f496467facd4a92becd2d955388d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.43623194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4825f496467facd4a92becd2d955388d, type: 3}
