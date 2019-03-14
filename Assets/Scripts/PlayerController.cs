@@ -215,6 +215,11 @@ public class PlayerController : MonoBehaviour {
 				TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
 				this.iframeTimer = 0;
 			}
+			
+			if (other.CompareTag("Player")) {
+				TakeDamage((int)Math.Floor(maxHealth / 4f));
+				this.iframeTimer = 0;
+			}
 		}
 	}
 
@@ -233,6 +238,29 @@ public class PlayerController : MonoBehaviour {
 			if (other.CompareTag("Asteroid")) {
 				TakeDamage(other.gameObject.GetComponent<AsteroidController>().dmg);
 				Destroy(other.gameObject, 0f);
+			}
+
+			if (other.CompareTag("Player")) {
+				TakeDamage((int)Math.Floor(maxHealth / 4f));
+				this.iframeTimer = 0;
+			}
+		}
+	}
+
+	private void OnCollisionStay2D(Collision2D other) {
+		if (iframeTimer >= iframes) {
+			if (other.gameObject.CompareTag("Player")) {
+				TakeDamage((int)Math.Floor(maxHealth / 4f));
+				this.iframeTimer = 0;
+			}
+		}
+	}
+
+	private void OnCollisionEnter2D(Collision2D other) {
+		if (iframeTimer >= iframes) {
+			if (other.gameObject.CompareTag("Player")) {
+				TakeDamage((int)Math.Floor(maxHealth / 8f));
+				this.iframeTimer = 0;
 			}
 		}
 	}
