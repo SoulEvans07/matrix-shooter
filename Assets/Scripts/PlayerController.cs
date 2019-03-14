@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 
 	private float timer = 1f;
 
-	public HealthSlider healthSlider;
+	public PixelSlider healthSlider;
 	private const int maxHealth = 5;
 	public int healthValue;
 	private bool isDead;
@@ -27,15 +27,22 @@ public class PlayerController : MonoBehaviour {
 	private float y;
 	private bool shoot;
 
-	public PowerUp activePowerup;
+	private PowerUp activePowerup;
 	public float powerupTimer;
+	public PixelSlider powerupSlider;
+	public float powerTimeSlice;
 
-	private void Start() {
+ 	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		this.isDead = false;
 		this.healthValue = maxHealth;
-		this.healthSlider.setValue(this.healthValue);
+		this.healthSlider.SetMaxValue(5);
+		this.healthSlider.SetValue(this.healthValue);
 		this.shootSpeed = defaultShootSpeed;
+		
+		this.activePowerup = null;
+		this.powerupSlider.SetMaxValue(26);
+		this.powerupSlider.SetValue(0);
 	}
 
 	private void Update() {
@@ -90,7 +97,7 @@ public class PlayerController : MonoBehaviour {
 			this.healthValue = 0;
 		}
 
-		healthSlider.setValue(this.healthValue);
+		healthSlider.SetValue(this.healthValue);
 
 		if (this.healthValue == 0) {
 			Death();
@@ -100,16 +107,21 @@ public class PlayerController : MonoBehaviour {
 	public void ActivatePowerUp(PowerUp powerup) {
 		activePowerup?.Remove(this);
 		this.activePowerup = powerup;
+		this.powerupTimer = 0;
+		this.powerTimeSlice = powerup.duration / 26f;
+		this.powerupSlider.SetValue(powerup.duration.Equals(0) ? 0 : 26);
 		powerup.Apply(this);
 	}
 
-	public void HandleActivePowerUp() {
+	private void HandleActivePowerUp() {
 		if (this.activePowerup != null) {
 			this.powerupTimer += Time.deltaTime;
 			if (this.powerupTimer > this.activePowerup.duration) {
 				this.activePowerup.Remove(this);
 				this.powerupTimer = 0f;
 				this.activePowerup = null;
+			} else {
+				this.powerupSlider.SetValue(26 - (int) Math.Ceiling(this.powerupTimer / powerTimeSlice));
 			}
 		}
 	}
@@ -118,7 +130,7 @@ public class PlayerController : MonoBehaviour {
 		this.healthValue += amount;
 		if (this.healthValue > maxHealth)
 			this.healthValue = maxHealth;
-		healthSlider.setValue(this.healthValue);
+		healthSlider.SetValue(this.healthValue);
 	}
 
 	public void Death() {
