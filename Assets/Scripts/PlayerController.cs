@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour {
 	private float x;
 	private float y;
 	private bool shoot;
+	
+	public PowerUp activePowerup;
+	public float powerupTimer;
 
 	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour {
 			Shoot();
 		}
 
+		HandleActivePowerUp();
+
 		Move(x, y);
 	}
 
@@ -80,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 		timer = 0f;
 	}
 
-	public void TakeDamage(int dmg) {
+	private void TakeDamage(int dmg) {
 		this.healthValue -= dmg;
 		if (this.healthValue < 0) {
 			this.healthValue = 0;
@@ -90,6 +95,23 @@ public class PlayerController : MonoBehaviour {
 
 		if (this.healthValue == 0) {
 			Death();
+		}
+	}
+
+	public void ActivatePowerUp(PowerUp powerup) {
+		activePowerup?.Remove(this);
+		this.activePowerup = powerup;
+		powerup.Apply(this);
+	}
+
+	public void HandleActivePowerUp() {
+		if (this.activePowerup != null) {
+			this.powerupTimer += Time.deltaTime;
+			if (this.powerupTimer > this.activePowerup.duration) {
+				this.activePowerup.Remove(this);
+				this.powerupTimer = 0f;
+				this.activePowerup = null;
+			}
 		}
 	}
 

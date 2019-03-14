@@ -29,6 +29,6 @@ public class PowerUpBehavior : MonoBehaviour {
 	}
 
 	private void ApplyPowerUp() {
-		this.powerup.Apply(this.playerController);
+		this.playerController.ActivatePowerUp(this.powerup);
 	}
 }

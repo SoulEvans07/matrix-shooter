@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PowerUpManager : MonoBehaviour {
+public class PowerUpActions : MonoBehaviour {
 	public void FasterShootingApplyAction(PlayerController controller) {
 		controller.shootSpeed /= 2;
 	}
