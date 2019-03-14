@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
+[Serializable]
 public class PlayerController : MonoBehaviour {
 	public string AXIS_X = "Horizontal";
 	public string AXIS_Y = "Vertical";
@@ -8,7 +11,8 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D _rigidbody;
 	public GameObject gunDisplay;
 	public GameObject projectile;
-	public float shootSpeed = 0.12f;
+	public float defaultShootSpeed = 0.12f;
+	public float shootSpeed;
 
 	private float timer = 1f;
 
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 		this.isDead = false;
 		this.healthValue = maxHealth;
 		this.healthSlider.setValue(this.healthValue);
+		this.shootSpeed = defaultShootSpeed;
 	}
 
 	private void Update() {
@@ -75,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		timer = 0f;
 	}
 
-	void TakeDamage(int dmg) {
+	public void TakeDamage(int dmg) {
 		this.healthValue -= dmg;
 		if (this.healthValue < 0) {
 			this.healthValue = 0;
@@ -88,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	private void Heal(int amount) {
+	public void Heal(int amount) {
 		this.healthValue += amount;
 		if (this.healthValue > maxHealth)
 			this.healthValue = maxHealth;

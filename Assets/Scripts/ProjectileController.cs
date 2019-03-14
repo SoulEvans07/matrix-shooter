@@ -22,4 +22,8 @@ public class ProjectileController : MonoBehaviour {
 	public void SetShooter(PlayerController pc) {
 		this.shooter = pc;
 	}
+
+	public PlayerController GetShooter() {
+		return this.shooter;
+	}
 }
