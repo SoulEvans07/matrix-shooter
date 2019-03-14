@@ -14,12 +14,12 @@ public class ProjectileController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(!stationary)
+		if (!stationary)
 			transform.position += transform.up;
 	}
 
 	public void SetColor(Color c) {
-		if(_renderer != null)
+		if (_renderer != null)
 			_renderer.color = c;
 	}
 
@@ -35,7 +35,7 @@ public class ProjectileController : MonoBehaviour {
 		endAction.Invoke(shooter);
 		Destroy(this.gameObject, 0f);
 	}
-	
+
 	[Serializable]
 	public class ProjectileEvent : UnityEvent<PlayerController> {
 	}

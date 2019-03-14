@@ -34,7 +34,7 @@ public class AsteroidController : MonoBehaviour {
 		bool isPlayer = other.CompareTag("Player");
 		bool isProjectile = other.CompareTag("Projectile");
 		bool isLaser = other.CompareTag("Laser");
-		
+
 		if (isPlayer || isProjectile || isLaser) {
 			if (powerUp != null) {
 				DropItem();
@@ -43,6 +43,7 @@ public class AsteroidController : MonoBehaviour {
 			if (isLaser) {
 				Destroy(this.gameObject, 0f);
 			}
+
 			if (isProjectile) {
 				Destroy(other.gameObject, 0f);
 				Destroy(this.gameObject, 0f);

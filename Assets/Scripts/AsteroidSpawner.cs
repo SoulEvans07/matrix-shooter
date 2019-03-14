@@ -29,7 +29,7 @@ public class AsteroidSpawner : MonoBehaviour {
 		if (Time.timeScale.Equals(0)) {
 			return;
 		}
-		
+
 		float speed = speeds[Random.Range(0, speeds.Length)];
 		int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 

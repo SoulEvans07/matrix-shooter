@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 	public PixelSlider powerupSlider;
 	public float powerTimeSlice;
 
- 	private void Start() {
+	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		this.isDead = false;
 		this.timer = this.shootSpeed;
@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour {
 		this.healthSlider.SetMaxValue(maxHealth);
 		this.healthSlider.SetValue(this.healthValue);
 		this.shootSpeed = defaultShootSpeed;
-		
+
 		this.activePowerup = null;
 		this.powerupSlider.SetMaxValue(26);
 		this.powerupSlider.SetValue(0);
-		
+
 		SetGunMode(GunMode.SINGLE);
 	}
 
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
 				laserInstance.transform.parent = this.transform;
 				break;
 		}
-		
+
 		gunDisplay.SetActive(false);
 		timer = 0f;
 	}
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour {
 	private void TakeDamage(int dmg) {
 		this.healthValue -= dmg;
 		_hitAnim.SetTrigger("hit");
-		
+
 		if (this.healthValue < 0) {
 			this.healthValue = 0;
 		}
@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour {
 		if (laserInstance != null) {
 			Destroy(laserInstance, 0f);
 		}
+
 		activePowerup?.Remove(this);
 		this.activePowerup = powerup;
 		this.powerupTimer = 0;
@@ -215,9 +216,9 @@ public class PlayerController : MonoBehaviour {
 				TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
 				this.iframeTimer = 0;
 			}
-			
+
 			if (other.CompareTag("Player")) {
-				TakeDamage((int)Math.Floor(maxHealth / 4f));
+				TakeDamage((int) Math.Floor(maxHealth / 4f));
 				this.iframeTimer = 0;
 			}
 		}
@@ -241,7 +242,7 @@ public class PlayerController : MonoBehaviour {
 			}
 
 			if (other.CompareTag("Player")) {
-				TakeDamage((int)Math.Floor(maxHealth / 4f));
+				TakeDamage((int) Math.Floor(maxHealth / 4f));
 				this.iframeTimer = 0;
 			}
 		}
@@ -250,7 +251,7 @@ public class PlayerController : MonoBehaviour {
 	private void OnCollisionStay2D(Collision2D other) {
 		if (iframeTimer >= iframes) {
 			if (other.gameObject.CompareTag("Player")) {
-				TakeDamage((int)Math.Floor(maxHealth / 4f));
+				TakeDamage((int) Math.Floor(maxHealth / 4f));
 				this.iframeTimer = 0;
 			}
 		}
@@ -259,7 +260,7 @@ public class PlayerController : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D other) {
 		if (iframeTimer >= iframes) {
 			if (other.gameObject.CompareTag("Player")) {
-				TakeDamage((int)Math.Floor(maxHealth / 8f));
+				TakeDamage((int) Math.Floor(maxHealth / 8f));
 				this.iframeTimer = 0;
 			}
 		}
