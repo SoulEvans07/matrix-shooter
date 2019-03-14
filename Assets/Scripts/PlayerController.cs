@@ -12,11 +12,19 @@ public class PlayerController : MonoBehaviour {
 	public GameObject projectile;
 	public float defaultShootSpeed = 0.12f;
 	public float shootSpeed;
+	public GameObject left_gun;
+	public GameObject middle_gun;
+	public GameObject right_gun;
+	public GunMode gunMode = GunMode.SINGLE;
+	public Sprite single_gun;
+	public Sprite double_gun;
+	public Sprite tripple_gun;
+	public Sprite laser_gun;
 
 	private float timer = 1f;
 
 	public PixelSlider healthSlider;
-	private const int maxHealth = 5;
+	private const int maxHealth = 26;
 	public int healthValue;
 	private bool isDead;
 	public bool IsDead => isDead;
@@ -36,13 +44,15 @@ public class PlayerController : MonoBehaviour {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		this.isDead = false;
 		this.healthValue = maxHealth;
-		this.healthSlider.SetMaxValue(5);
+		this.healthSlider.SetMaxValue(maxHealth);
 		this.healthSlider.SetValue(this.healthValue);
 		this.shootSpeed = defaultShootSpeed;
 		
 		this.activePowerup = null;
 		this.powerupSlider.SetMaxValue(26);
 		this.powerupSlider.SetValue(0);
+		
+		SetGunMode(GunMode.TRIPLE);
 	}
 
 	private void Update() {
@@ -81,14 +91,52 @@ public class PlayerController : MonoBehaviour {
 		_rigidbody.MovePosition(nextPos);
 	}
 
+	public void SetGunMode(GunMode mode) {
+		this.gunMode = mode;
+		SpriteRenderer spr_rendr = this.gunDisplay.GetComponent<SpriteRenderer>();
+		switch (gunMode) {
+			case GunMode.SINGLE:
+				spr_rendr.sprite = single_gun;
+				break;
+			case GunMode.DOUBLE:
+				spr_rendr.sprite = double_gun;
+				break;
+			case GunMode.TRIPLE:
+				spr_rendr.sprite = tripple_gun;
+				break;
+			case GunMode.LASER:
+				spr_rendr.sprite = laser_gun;
+				break;
+		}
+	}
+
 	void Shoot() {
-		GameObject proj = Instantiate(projectile, transform.position + (transform.up * 1.5f), transform.rotation);
+		switch (gunMode) {
+			case GunMode.SINGLE:
+				SpawnProjectile(middle_gun.transform);
+				break;
+			case GunMode.DOUBLE:
+				SpawnProjectile(left_gun.transform);
+				SpawnProjectile(right_gun.transform);
+				break;
+			case GunMode.TRIPLE:
+				SpawnProjectile(left_gun.transform);
+				SpawnProjectile(middle_gun.transform);
+				SpawnProjectile(right_gun.transform);
+				break;
+			case GunMode.LASER: break;
+		}
+		
+		gunDisplay.SetActive(false);
+		timer = 0f;
+	}
+
+	void SpawnProjectile(Transform gun) {
+		GameObject proj = Instantiate(projectile, gun.position + transform.up, transform.rotation);
 		ProjectileController projContr = proj.GetComponent<ProjectileController>();
 		projContr.SetShooter(this);
 		projContr.SetColor(projectileColor);
 		proj.gameObject.layer = this.gameObject.layer;
-		gunDisplay.SetActive(false);
-		timer = 0f;
 	}
 
 	private void TakeDamage(int dmg) {
