@@ -10,7 +10,8 @@ public class PowerUpActions : MonoBehaviour {
 	}
 	
 
-	public void HealApplyAction() {
+	public void HealApplyAction(PlayerController controller) {
+		controller.Heal(1);
 	}
 
 	public void HealRemoveAction() {

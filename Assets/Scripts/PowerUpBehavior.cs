@@ -12,13 +12,13 @@ public class PowerUpBehavior : MonoBehaviour {
 		if (isProjectile || isPlayer) {
 			if (isProjectile) {
 				this.playerController = other.GetComponent<ProjectileController>().GetShooter();
+				Destroy(other.gameObject, 0f);
 			}
 			if (isPlayer) {
 				this.playerController = other.GetComponent<PlayerController>();
 			}
 
 			this.ApplyPowerUp();
-			Destroy(other.gameObject, 0f);
 			Destroy(this.gameObject, 0f);
 		}
 	}
