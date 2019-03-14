@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -27,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 	private float x;
 	private float y;
 	private bool shoot;
-	
+
 	public PowerUp activePowerup;
 	public float powerupTimer;
 
@@ -41,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void Update() {
 		if (isDead) return;
-		
+
 		x = Input.GetAxisRaw(AXIS_X);
 		y = Input.GetAxisRaw(AXIS_Y);
 
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate() {
 		if (isDead) return;
-		
+
 		timer += Time.deltaTime;
 
 		if (!gunDisplay.activeSelf && timer >= shootSpeed) {

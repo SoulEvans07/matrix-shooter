@@ -1,17 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AsteroidController : MonoBehaviour {
 	private Transform _transform;
-	
+
 	public Vector3 offset;
-	
+
 	public int dmg = 1;
 	public Vector3 velocity;
 	private float timer;
 	public float speed;
-	
+
 	public GameObject powerUp;
 
 	private void Awake() {
@@ -37,8 +35,8 @@ public class AsteroidController : MonoBehaviour {
 			if (powerUp != null) {
 				DropItem();
 			}
-			if (other.CompareTag("Projectile")) {
 
+			if (other.CompareTag("Projectile")) {
 				Destroy(other.gameObject, 0f);
 				Destroy(this.gameObject, 0f);
 			}
@@ -48,5 +46,7 @@ public class AsteroidController : MonoBehaviour {
 	private void DropItem() {
 		powerUp.GetComponent<Collider2D>().enabled = true;
 		powerUp.transform.parent = _transform.parent;
+		PowerUpBehavior puContr = powerUp.GetComponent<PowerUpBehavior>();
+		puContr.SetVelocity(this.velocity, this.speed / 2);
 	}
 }

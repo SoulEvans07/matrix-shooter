@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameAreaManager : MonoBehaviour {
 	public Transform player_one;
 	public Transform player_two;
 	public Transform barrier_top;
 	public Transform barrier_bottom;
-	
+
 	public Rect gameArea;
 
 	public float timer;
@@ -15,12 +13,12 @@ public class GameAreaManager : MonoBehaviour {
 
 	void Update() {
 		timer += Time.unscaledDeltaTime;
-		
+
 		GameSettings.MIN_WIDTH = this.gameArea.x + 2;
 		GameSettings.MIN_HEIGHT = this.gameArea.y + 1;
 		GameSettings.MAX_WIDTH = this.gameArea.x + this.gameArea.width - 2;
 		GameSettings.MAX_HEIGHT = this.gameArea.y + this.gameArea.height - 1;
-		
+
 		if (timer > shrinkTime && Time.timeScale > 0f) {
 			Shrink();
 		}
@@ -30,10 +28,10 @@ public class GameAreaManager : MonoBehaviour {
 		timer = 0;
 		Nudge(player_one);
 		Nudge(player_two);
-		
+
 		barrier_top.position -= barrier_top.up;
 		barrier_bottom.position -= barrier_bottom.up;
-		
+
 		this.gameArea.y += 1;
 		this.gameArea.height -= 2;
 

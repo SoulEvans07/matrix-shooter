@@ -18,5 +18,6 @@ public class PowerUp {
 	}
 
 	[Serializable]
-	public class PowerUpEvent : UnityEvent<PlayerController> {}
+	public class PowerUpEvent : UnityEvent<PlayerController> {
+	}
 }

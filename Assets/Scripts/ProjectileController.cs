@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
 	private SpriteRenderer _renderer;
@@ -18,7 +16,7 @@ public class ProjectileController : MonoBehaviour {
 	public void SetColor(Color c) {
 		_renderer.color = c;
 	}
-	
+
 	public void SetShooter(PlayerController pc) {
 		this.shooter = pc;
 	}

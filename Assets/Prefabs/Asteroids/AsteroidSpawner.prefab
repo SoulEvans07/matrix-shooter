@@ -246,6 +246,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 1
+  powerupProbability: 0.4
+  powerupAsteroidProbability: 0.7
+  powerups:
+  - powerUpPrefab: {fileID: 5607910197882191902, guid: 37cb21b71fa1a7d43b5b908911625928,
+      type: 3}
+    spawn_weight: 4
+  - powerUpPrefab: {fileID: 7533705177177658332, guid: bfe1adc054a341d41ab0527d86d2f24a,
+      type: 3}
+    spawn_weight: 1
+  powerupIndexes: 
   asteroids:
   - {fileID: 8059599234493138662, guid: 867ff5253c0337f4ca93564c1dd4101e, type: 3}
   - {fileID: 6116899124120401453, guid: 5a1c44db734658b44b9d810a854eda9e, type: 3}
@@ -263,15 +273,15 @@ MonoBehaviour:
   - spawnPoint: {fileID: 2231380818843059317}
     startVector: {x: 1, y: 0, z: 0}
   - spawnPoint: {fileID: 6539116248794913038}
-    startVector: {x: 1, y: 0, z: 0}
+    startVector: {x: -1, y: 0, z: 0}
   - spawnPoint: {fileID: 3351539313940634696}
-    startVector: {x: 1, y: 0, z: 0}
+    startVector: {x: -1, y: 0, z: 0}
   - spawnPoint: {fileID: 2334206155355872825}
-    startVector: {x: 1, y: 0, z: 0}
+    startVector: {x: -1, y: 0, z: 0}
   - spawnPoint: {fileID: 7617896194911357602}
-    startVector: {x: 1, y: 0, z: 0}
+    startVector: {x: -1, y: 0, z: 0}
   - spawnPoint: {fileID: 3447608643766692424}
-    startVector: {x: 1, y: 0, z: 0}
+    startVector: {x: -1, y: 0, z: 0}
   - spawnPoint: {fileID: 271711700648312704}
     startVector: {x: -1, y: 1, z: 0}
   - spawnPoint: {fileID: 7278218626363246552}

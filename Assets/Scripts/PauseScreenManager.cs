@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PauseScreenManager : MonoBehaviour {
 	public GameObject pauseScreen;
@@ -8,17 +6,17 @@ public class PauseScreenManager : MonoBehaviour {
 
 	public float buttonTimer = 0.3f;
 	private float timer;
-	
+
 	void Awake() {
 		paused = false;
 	}
 
 	void Update() {
 		timer += Time.unscaledDeltaTime;
-		
+
 		bool reset = Input.GetButton("Restart");
 		bool submit = Input.GetButton("Accept");
-		
+
 		if (timer > buttonTimer) {
 			if (paused) {
 				if (submit) {

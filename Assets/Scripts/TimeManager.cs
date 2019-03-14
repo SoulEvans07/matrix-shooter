@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
 	public float timeScale = 0.3f;
@@ -10,8 +8,7 @@ public class TimeManager : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(Time.timeScale > 0)
+		if (Time.timeScale > 0)
 			Time.timeScale = this.timeScale;
 	}
-
 }
