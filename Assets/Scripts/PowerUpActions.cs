@@ -2,11 +2,11 @@
 
 public class PowerUpActions : MonoBehaviour {
 	public void FasterShootingApplyAction(PlayerController controller) {
-		controller.shootSpeed /= 2;
+		controller.SetShootSpeed(controller.shootSpeed / 2);
 	}
 
 	public void FasterShootingRemoveAction(PlayerController controller) {
-		controller.shootSpeed = controller.defaultShootSpeed;
+		controller.SetShootSpeed(controller.defaultShootSpeed);
 	}
 
 
@@ -32,9 +32,11 @@ public class PowerUpActions : MonoBehaviour {
 
 	public void LaserGunApplyAction(PlayerController controller) {
 		controller.SetGunMode(GunMode.LASER);
+		controller.SetShootSpeed(controller.shootSpeed * 10);
 	}
 
 	public void LaserGunRemoveAction(PlayerController controller) {
 		controller.SetGunMode(GunMode.SINGLE);
+		controller.SetShootSpeed(controller.defaultShootSpeed);
 	}
 }

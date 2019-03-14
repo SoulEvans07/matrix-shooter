@@ -25,7 +25,7 @@ public class PauseScreenManager : MonoBehaviour {
 					Resume();
 				}
 			} else {
-				if (reset) {
+				if (reset && Time.timeScale > 0f) {
 					Pause();
 				}
 			}

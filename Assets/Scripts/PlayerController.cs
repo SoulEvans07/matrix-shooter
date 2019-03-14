@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D _rigidbody;
 	public GameObject gunDisplay;
 	public GameObject projectile;
+	public GameObject laser;
+	public GameObject laserInstance;
 	public float defaultShootSpeed = 0.12f;
 	public float shootSpeed;
 	public GameObject left_gun;
@@ -25,6 +27,8 @@ public class PlayerController : MonoBehaviour {
 
 	public PixelSlider healthSlider;
 	private const int maxHealth = 26;
+	private float iframeTimer = 0f;
+	public float iframes = 0.06f;
 	public int healthValue;
 	private bool isDead;
 	public bool IsDead => isDead;
@@ -43,6 +47,8 @@ public class PlayerController : MonoBehaviour {
  	private void Start() {
 		_rigidbody = GetComponent<Rigidbody2D>();
 		this.isDead = false;
+		this.timer = this.shootSpeed;
+		this.iframeTimer = this.iframes;
 		this.healthValue = maxHealth;
 		this.healthSlider.SetMaxValue(maxHealth);
 		this.healthSlider.SetValue(this.healthValue);
@@ -68,6 +74,7 @@ public class PlayerController : MonoBehaviour {
 		if (isDead) return;
 
 		timer += Time.deltaTime;
+		iframeTimer += Time.deltaTime;
 
 		if (!gunDisplay.activeSelf && timer >= shootSpeed) {
 			gunDisplay.SetActive(true);
@@ -110,33 +117,43 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void SetShootSpeed(float value) {
+		this.shootSpeed = value;
+		this.timer = value;
+	}
+
 	void Shoot() {
 		switch (gunMode) {
 			case GunMode.SINGLE:
-				SpawnProjectile(middle_gun.transform);
+				SpawnProjectile(middle_gun.transform, this.projectile);
 				break;
 			case GunMode.DOUBLE:
-				SpawnProjectile(left_gun.transform);
-				SpawnProjectile(right_gun.transform);
+				SpawnProjectile(left_gun.transform, this.projectile);
+				SpawnProjectile(right_gun.transform, this.projectile);
 				break;
 			case GunMode.TRIPLE:
-				SpawnProjectile(left_gun.transform);
-				SpawnProjectile(middle_gun.transform);
-				SpawnProjectile(right_gun.transform);
+				SpawnProjectile(left_gun.transform, this.projectile);
+				SpawnProjectile(middle_gun.transform, this.projectile);
+				SpawnProjectile(right_gun.transform, this.projectile);
 				break;
-			case GunMode.LASER: break;
+			case GunMode.LASER:
+				laserInstance = SpawnProjectile(middle_gun.transform, this.laser);
+				laserInstance.transform.parent = this.transform;
+				break;
 		}
 		
 		gunDisplay.SetActive(false);
 		timer = 0f;
 	}
 
-	void SpawnProjectile(Transform gun) {
-		GameObject proj = Instantiate(projectile, gun.position + transform.up, transform.rotation);
+	GameObject SpawnProjectile(Transform gun, GameObject bullet) {
+		GameObject proj = Instantiate(bullet, gun.position + transform.up, transform.rotation);
 		ProjectileController projContr = proj.GetComponent<ProjectileController>();
 		projContr.SetShooter(this);
 		projContr.SetColor(projectileColor);
 		proj.gameObject.layer = this.gameObject.layer;
+
+		return proj;
 	}
 
 	private void TakeDamage(int dmg) {
@@ -153,6 +170,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void ActivatePowerUp(PowerUp powerup) {
+		if (laserInstance != null) {
+			Destroy(laserInstance, 0f);
+		}
 		activePowerup?.Remove(this);
 		this.activePowerup = powerup;
 		this.powerupTimer = 0;
@@ -186,19 +206,33 @@ public class PlayerController : MonoBehaviour {
 		Debug.Log(this.name + " is dead!");
 	}
 
-	private void OnCollisionEnter2D(Collision2D other) {
-//		Debug.Log("coll: " + other.gameObject.name);
+	private void OnTriggerStay2D(Collider2D other) {
+		if (iframeTimer >= iframes) {
+			if (other.CompareTag("Laser")) {
+				TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
+				this.iframeTimer = 0;
+			}
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-		if (other.gameObject.tag.Equals("Projectile")) {
-			TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
-			Destroy(other.gameObject, 0f);
-		}
+		if (iframeTimer >= iframes) {
+			if (other.CompareTag("Laser")) {
+				TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
+				this.iframeTimer = 0;
+			}
 
-		if (other.gameObject.tag.Equals("Asteroid")) {
-			TakeDamage(other.gameObject.GetComponent<AsteroidController>().dmg);
-			Destroy(other.gameObject, 0f);
+			if (other.CompareTag("Projectile")) {
+				TakeDamage(other.gameObject.GetComponent<ProjectileController>().dmg);
+				Destroy(other.gameObject, 0f);
+				this.iframeTimer = 0;
+			}
+
+			if (other.CompareTag("Asteroid")) {
+				TakeDamage(other.gameObject.GetComponent<AsteroidController>().dmg);
+				Destroy(other.gameObject, 0f);
+				this.iframeTimer = 0;
+			}
 		}
 	}
 }

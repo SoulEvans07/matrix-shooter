@@ -31,12 +31,19 @@ public class AsteroidController : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {
-		if (other.CompareTag("Projectile") || other.CompareTag("Player")) {
+		bool isPlayer = other.CompareTag("Player");
+		bool isProjectile = other.CompareTag("Projectile");
+		bool isLaser = other.CompareTag("Laser");
+		
+		if (isPlayer || isProjectile || isLaser) {
 			if (powerUp != null) {
 				DropItem();
 			}
 
-			if (other.CompareTag("Projectile")) {
+			if (isLaser) {
+				Destroy(this.gameObject, 0f);
+			}
+			if (isProjectile) {
 				Destroy(other.gameObject, 0f);
 				Destroy(this.gameObject, 0f);
 			}

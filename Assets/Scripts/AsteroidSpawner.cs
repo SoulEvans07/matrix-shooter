@@ -8,7 +8,7 @@ public class AsteroidSpawner : MonoBehaviour {
 	[Range(0, 1)] public float powerupProbability;
 	[Range(0, 1)] public float powerupAsteroidProbability;
 	public List<PowerUpElement> powerups;
-	[SerializeField] private List<int> powerupIndexes;
+	private List<int> powerupIndexes;
 	public GameObject[] asteroids;
 	public AsteroidSpawnPoint[] spawnPoints;
 

@@ -297,6 +297,7 @@ MonoBehaviour:
   gunDisplay: {fileID: 682752760471604068}
   projectile: {fileID: 8439544785281582444, guid: 850337bad9a9a72448ac31e6cc02ff8c,
     type: 3}
+  laser: {fileID: 4609987133313515463, guid: 037831199fbb1824fa4616e0f223190a, type: 3}
   defaultShootSpeed: 0.12
   shootSpeed: 0.12
   left_gun: {fileID: 5615929925771153905}
