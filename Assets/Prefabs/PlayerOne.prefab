@@ -305,7 +305,7 @@ MonoBehaviour:
   gunMode: 0
   single_gun: {fileID: 21300000, guid: 43b5efa6811cf0b44921fc147c88fd2e, type: 3}
   double_gun: {fileID: 21300000, guid: 20b645dadf185324fa2f459f08fe7bcc, type: 3}
-  tripple_gun: {fileID: 21300000, guid: 01170c9e56d518a449e9c9436a75a687, type: 3}
+  triple_gun: {fileID: 21300000, guid: 01170c9e56d518a449e9c9436a75a687, type: 3}
   laser_gun: {fileID: 21300000, guid: 8a6e8504c71ba294b902edac92fa5955, type: 3}
   healthSlider: {fileID: 0}
   healthValue: 0

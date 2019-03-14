@@ -47,6 +47,6 @@ public class AsteroidController : MonoBehaviour {
 		powerUp.GetComponent<Collider2D>().enabled = true;
 		powerUp.transform.parent = _transform.parent;
 		PowerUpBehavior puContr = powerUp.GetComponent<PowerUpBehavior>();
-		puContr.SetVelocity(this.velocity, this.speed / 2);
+		puContr.SetVelocity(this.velocity, this.speed / 4);
 	}
 }

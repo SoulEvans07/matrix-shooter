@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5400274784835066438
+--- !u!1001 &7028544397996108920
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,42 @@ PrefabInstance:
     - target: {fileID: 2485065326801570202, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
       propertyPath: m_Name
-      value: HealPU
+      value: DoubleGunPU
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.1528652
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.46278
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2485065326801570205, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
@@ -35,17 +70,27 @@ PrefabInstance:
     - target: {fileID: 2485065326801570206, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570206, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: m_Color.g
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2485065326801570206, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.01666665
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2485065326801570201, guid: 6b9d53291993de44ab655546158585c7,
+        type: 3}
+      propertyPath: powerup.name
+      value: DoubleGun
       objectReference: {fileID: 0}
     - target: {fileID: 2485065326801570201, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
       propertyPath: powerup.applyAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: HealApplyAction
+      value: DoubleGunApplyAction
       objectReference: {fileID: 0}
     - target: {fileID: 2485065326801570201, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
@@ -54,13 +99,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485065326801570201, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
-      propertyPath: powerup.duration
-      value: 0
+      propertyPath: powerup.removeAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DoubleGunRemoveAction
       objectReference: {fileID: 0}
     - target: {fileID: 2485065326801570201, guid: 6b9d53291993de44ab655546158585c7,
         type: 3}
-      propertyPath: powerup.name
-      value: Heal
+      propertyPath: powerup.removeAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9d53291993de44ab655546158585c7, type: 3}

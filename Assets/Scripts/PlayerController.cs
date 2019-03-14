@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	public GunMode gunMode = GunMode.SINGLE;
 	public Sprite single_gun;
 	public Sprite double_gun;
-	public Sprite tripple_gun;
+	public Sprite triple_gun;
 	public Sprite laser_gun;
 
 	private float timer = 1f;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 		this.powerupSlider.SetMaxValue(26);
 		this.powerupSlider.SetValue(0);
 		
-		SetGunMode(GunMode.TRIPLE);
+		SetGunMode(GunMode.SINGLE);
 	}
 
 	private void Update() {
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 				spr_rendr.sprite = double_gun;
 				break;
 			case GunMode.TRIPLE:
-				spr_rendr.sprite = tripple_gun;
+				spr_rendr.sprite = triple_gun;
 				break;
 			case GunMode.LASER:
 				spr_rendr.sprite = laser_gun;
